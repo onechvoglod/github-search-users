@@ -20,31 +20,28 @@ const GithubState = ({ children }) => {
 
   const [state, dispatch] = useReducer(GithubReducer, initialState);
 
-  const search = async (name) => {
-    loading();
-    //...
-    dispatch({
-      type: SEARCH_USERS,
-      payload: [],
-    });
+  const search = (value) => {
+    setLoading();
+
+    fetch(`https://api.github.com/search/users?q=${value}`)
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: SEARCH_USERS, payload: data.items }));
   };
 
   const getUser = (name) => {
-    loading();
-    //...
-    dispatch({
-      type: GET_USER,
-      payload: {},
-    });
+    setLoading();
+
+    fetch(`https://api.github.com/users/${name}`)
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: GET_USER, payload: data }));
   };
 
-  const getRepos = (value) => {
-    loading();
-    //...
-    dispatch({
-      type: GET_REPOS,
-      payload: [],
-    });
+  const getRepos = (name) => {
+    setLoading();
+
+    fetch(`https://api.github.com/users/${name}/repos?per_page=5`)
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: GET_REPOS, payload: data }));
   };
 
   const setLoading = (value) =>

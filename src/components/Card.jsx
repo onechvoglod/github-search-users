@@ -1,18 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Card = (props) => {
+const Card = ({ user }) => {
   return (
     <div className="card">
-      <img src="..." className="card-img-top" alt="..." />
+      <img src={user.avatar_url} className="card-img-top" alt={user.login} />
       <div className="card-body">
-        <h5 className="card-title">Название карточки</h5>
-        <p className="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-        <Link to="#" className="btn btn-primary">
-          Переход куда-нибудь
+        <h5 className="card-title">{user.login}</h5>
+        <Link to={"/profile/" + user.login} className="btn btn-primary">
+          Инфо
         </Link>
       </div>
     </div>

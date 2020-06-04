@@ -1,16 +1,20 @@
 import React, { useState, useContext } from "react";
 import { AlertContext } from "../context/alert/alertContext";
+import { GithubContext } from "../context/github/githubContext";
 
 const Input = (props) => {
   const [value, setValue] = useState("");
-  const { show } = useContext(AlertContext);
+  const { show, hide } = useContext(AlertContext);
+  const github = useContext(GithubContext);
 
   const onSubmit = (event) => {
     if (event.key !== "Enter") return;
+    github.clearUsers();
     if (value.trim()) {
-      console.log(value);
+      github.search(value.trim());
+      hide();
     } else {
-      show("Введите имя пользователя!");
+      show("Вы не ввели имя пользователя!");
     }
   };
 
@@ -18,7 +22,7 @@ const Input = (props) => {
     <input
       className="form-control form-control-lg mb-4"
       type="text"
-      placeholder=".form-control-lg"
+      placeholder="Введите имя пользователя"
       value={value}
       onChange={(event) => setValue(event.target.value)}
       onKeyPress={onSubmit}

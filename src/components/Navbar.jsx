@@ -5,7 +5,7 @@ const Navbar = (props) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light mb-4">
       <div className="navbar-brand" href="#">
-        Navbar
+        Github-search
       </div>
       <button
         className="navbar-toggler"

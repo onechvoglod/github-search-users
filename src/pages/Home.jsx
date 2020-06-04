@@ -1,20 +1,32 @@
-import React, { Fragment } from "react";
-import Input from "../components/Input";
+import React, { Fragment, useContext } from "react";
+import Search from "../components/Search";
 import Card from "../components/Card";
+import { GithubContext } from "../context/github/githubContext";
+import { ModalContext } from "../context/modal/modalContext";
+import Confirm from "../components/Confirm/Confirm";
+import Modal from "../components/Modal/Modal";
+import Loading from "../components/Loading/Loading";
 
-const Home = (props) => {
-  const arr = [1, 2, 3, 4, 5, 6];
+const Home = () => {
+  const { users, loading } = useContext(GithubContext);
+  const { modal } = useContext(ModalContext);
+
   return (
     <Fragment>
-      <Input />
+      <Modal />
+      {modal.allow ? <Search /> : <Confirm />}
       <div className="row">
-        {arr.map((i, y) => {
-          return (
-            <div key={y} className="col-sm-4 pb-4">
-              <Card />
-            </div>
-          );
-        })}
+        {loading ? (
+          <Loading />
+        ) : (
+          users.map((user) => {
+            return (
+              <div key={user.id} className="col-sm-4 pb-4">
+                <Card user={user} />
+              </div>
+            );
+          })
+        )}
       </div>
     </Fragment>
   );

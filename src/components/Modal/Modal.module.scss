@@ -1,0 +1,29 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  .modal_inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 400px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.33);
+    margin: 100px auto;
+    height: 200px;
+    padding: 10px;
+    font-size: 30px;
+    position: relative;
+    text-align: center;
+  }
+  .modal_close {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 0;
+  }
+}

@@ -1,6 +1,10 @@
 export const HIDE_ALERT = "HIDE_ALERT";
+export const SHOW_ALERT = "SHOW_ALERT";
 export const SEARCH_USERS = "SEARCH_USERS";
 export const GET_USER = "GET_USER";
 export const GET_REPOS = "GET_REPOS";
 export const SET_LOADING = "SET_LOADING";
 export const CLEAR_USERS = "CLEAR_USERS";
+export const HIDE_MODAL = "HIDE_MODAL";
+export const SHOW_MODAL = "SHOW_MODAL";
+export const CONFIRM = "CONFIRM";
